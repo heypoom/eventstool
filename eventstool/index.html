@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Name</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div class="app">
+      <section class="header">
+        <h1>
+          Welcome, {{name}}.
+        </h1>
+      </section>
+      
+      <section class="buttons">
+        <button class="btn-direct" onclick="location.href='events_list.html'">
+          My Events
+        </button>
+        <button class="btn-direct" onclick="location.href='browse.html'">
+          Browse Events
+        </button>
+      </section>
+    </div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyA6IajEBlN1ftVsXYMJwa5MR205ktPWCOY",
+        authDomain: "eventstool.firebaseapp.com",
+        databaseURL: "https://eventstool.firebaseio.com",
+        projectId: "eventstool",
+        storageBucket: "eventstool.appspot.com",
+        messagingSenderId: "399563964234",
+        appId: "1:399563964234:web:e4238914d7efaa18754bb3"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      let db = firebase.firestore();
+      window.db = db;
+  
+      window.vm = new Vue({
+        el:'.app',
+        data: {
+          name: ''
+        },
+        mounted() {
+                db.collection("users").doc("user").onSnapshot(doc => {
+                    this.name = doc.data().name
+                })
+            }
+      })
+    </script>
+  </body>
+  
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Event 1</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <div class="app">
+      <section class="header">
+        <h1>Event 1</h1>
+        <button class="back" onclick="location.href='events_list.html'">
+          My Events
+        </button>
+      </section>
+
+      <section class="detail">
+
+        <div>
+          <img src="https://picsum.photos/200/80"/>
+          <p style="font-family:Mali,cursive;">Event 1</p>
+        </div>
+
+        <div class="tags">
+          <div class="tag">
+            Tag
+          </div>
+        </div>
+        <div class="tags">
+          <div class="tag">
+            Tag
+          </div>
+        </div>
+        <div class="tags">
+          <div class="tag">
+            Tag
+          </div>
+        </div>
+
+        <div class="info">
+          <p>
+            About:<br />
+            Date: <br />
+            Place:<br />
+            Year:<br />
+            Price:<br />
+            Certificate:<br />
+            <br />
+            <a href="https://www.camphub.in.th/">More Details</a>
+          </p>
+        </div>
+
+        <div class="friends">
+          8 friends interested
+
+        <button class="btn-interest">
+          Interested
+        </button>
+        </div>
+      </section>
+
+      <section class="change">
+        <button class="change" onclick="location.href='browse.html'">
+          Back To Browse
+        </button>
+      </section>
+      
+    </div>
+
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+     <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+ 
+     <script>
+       // Your web app's Firebase configuration
+       var firebaseConfig = {
+         apiKey: "AIzaSyA6IajEBlN1ftVsXYMJwa5MR205ktPWCOY",
+         authDomain: "eventstool.firebaseapp.com",
+         databaseURL: "https://eventstool.firebaseio.com",
+         projectId: "eventstool",
+         storageBucket: "eventstool.appspot.com",
+         messagingSenderId: "399563964234",
+         appId: "1:399563964234:web:e4238914d7efaa18754bb3"
+       };
+
+       let db = firebase.firestore();
+       window.db = db;
+
+       window.vm = new Vue({
+        el:".app",
+        
+       })
+
+
+    </script>
+  </body>
+
+  <style>
+        section.header {
+          font-family: "Mali", cursive;
+          background-color: #4A563E;
+          text-align: center;
+          color: #F4F1DF;
+          width: 100%;
+          top: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: auto;
+          right: 0;
+          position: fixed;;
+          min-height: 20%;
+          z-index:2;
+        }
+
+        button.back {
+          font-family: "Mali", cursive;
+          font-size: 70%;
+          text-align: center;
+          vertical-align: middle;
+          border:0px;
+          border-radius:8px;
+          background-color:#F4F1DF;
+          color: #436F28;
+          width: 45px;
+          height: 45px;
+          position: fixed;
+          right: 20px;
+
+        }
+
+        section.detail {
+            position: absolute;
+            top:20%;
+            right:0;
+            width:100%;
+            margin-bottom:100px;
+            background-color: #FFFEF6;
+        }
+
+
+        .image p {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin-right: 10px;
+        }
+
+        .tags {
+          font-family: "Mali", cursive;
+          font-size:14px;
+          background-color: #C5DCA6;
+          position: relative;
+          margin: 6px;
+          display: inline-block;
+          padding: 5px 20px;
+          border-radius: 20px;
+
+        }
+
+        .info {
+          font-family: "Mali", cursive;
+          position: relative;
+          margin: 10px;
+    }
+          
+        .friends {
+          font-family: "Mali", cursive;
+          font-family: "Mali", cursive;
+          position: relative;
+          margin: 10px;
+          display:flex;
+          justify-content:space-between;
+          align-items: center;
+        }
+
+        section.change {
+          background-color: #4A563E;
+          text-align:center;
+          color:#F4F1DF;
+          width:100%;
+          position:fixed;
+          bottom:0;
+          display:flex;
+          align-items:center;
+          justify-content:space-evenly;
+          padding:auto;
+          right:0;
+          height:10%;
+    }
+
+       button.change {
+          border:0px;
+          border-radius:8px;
+          font-family: 'Mali', cursive;
+          background-color:#F4F1DF;
+          color: #436F28;
+          position:relative;
+          height:75%;
+          width:45%;
+          font-size:18px;
+        }
+
+        .btn-interest {
+            font-family: 'Mali', cursive;
+            width:100px;
+            padding:10px 0;
+            border: 0px;
+            border-radius: 10%;
+            background-color:#C5DCA6 ;
+            
+        }
+  </style>
+</html>

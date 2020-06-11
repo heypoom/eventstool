@@ -1,0 +1,185 @@
+/*pallete {
+  Charcoal: #1D1F15
+  Matcha: #4A563E
+  Cactus: #436F28
+  Melon: #C5DCA6
+  Vanilla: #F2F1CB
+  Jasmin: #F4F1DF
+  Background: #FFFEF6
+}*/
+
+body {
+    font-family: 'Mali', cursive;
+    font-size:16px;
+    background-color: #FFFEF6;
+    color: #4A563E;
+    }
+  
+  h1 {
+    font-size:30px;
+  }
+  
+  h2 {
+    font-size:26px;
+  }
+  
+  h3 {
+    font-size:24px;
+  }
+  
+  p.title {
+    font-size:18px;
+    font-weight:bold;
+  }
+  
+  section.header {
+    background-color: #4A563E;
+    text-align:center;
+    color:#F4F1DF;
+    width:100%;
+    position:fixed;
+    top:0;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:auto;
+    right:0;
+    min-height:20%;
+  }
+  
+  section.buttons {
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    height:80%;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    left:0;
+    top:20%;
+    bottom:20%;
+    background-color:#FFFEF6;
+  }
+  
+  section.actions {
+    position:absolute;
+    height:80%;
+    width:100%;
+    left:0;
+    align-items:center;
+    top:20%;
+    padding:2%;
+    background-color:#FFFEF6;
+    margin-bottom:80px;
+  }
+  
+  
+  .btn-direct {
+    border:0px;
+    max-width:75%;
+    min-width:75%;
+    max-height:40%;
+    min-height:30%;
+    font-size:150%;
+    margin-top:5%;
+    margin-bottom:5%;
+    border-radius:8px;
+    font-family: 'Mali', cursive;
+    background-color:#C5DCA6;
+    color:#4A563E;
+  }
+  
+  section.change {
+    background-color: #4A563E;
+    text-align:center;
+    color:#F4F1DF;
+    width:100%;
+    position:fixed;
+    bottom:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    padding:auto;
+    right:0;
+    height:10%;
+  }
+  
+  button.change {
+    border:0px;
+    border-radius:8px;
+    font-family: 'Mali', cursive;
+    background-color:#F4F1DF;
+    color: #436F28;
+    position:relative;
+    height:75%;
+    width:45%;
+    font-size:18px;
+  }
+  
+  button.active {
+    background-color:#DED5A5;
+  }
+  
+   div.event {
+      border: 2px #1D1F15 solid;
+      display:flex;
+      height:100px;
+      width:100%;
+      position:relative;
+      overflow:hidden;
+      border-radius:5px;
+      margin:3% 0;
+      background-color:#C5DCA6;
+    }
+  
+  div.smoltag {
+        background-color: #FFFEF6;
+        position: relative;
+        border-radius: 20px;
+        margin:2px;
+        font-size:10px;
+        padding:2px 8px;
+      }
+  
+  img.thumbnail {
+    height:100%;
+    width:auto;
+    border-right:5px #1D1F15 solid;
+  }
+  
+  div.image {
+    position:relative;
+    height:100%;
+  }
+  
+  div.smoltag_browse {
+        background-color: #FFFEF6;
+        position: relative;
+        border-radius: 20px;
+        margin:2px;
+        font-size:10px;
+        padding:2px 8px;
+      }
+  
+img.img-header {
+    position: relative;
+    width:100%;
+    max-height: 40%;
+}
+
+.tags {
+    font-family: "Mali", cursive;
+    font-size:14px;
+    background-color: #C5DCA6;
+    position: relative;
+    margin: 6px;
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 20px;
+
+  }
+
+  .tagss {
+      display: flex;
+  }

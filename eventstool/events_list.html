@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Events</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css"
+    />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <section class="header">
+        <h1>
+          My Events
+        </h1>
+      </section>
+
+      <section class="actions">
+        <div class="event" v-for="event in events" v-if=event.interested>
+          <div class="image">
+            <div class="smoltag" style="position:absolute;bottom:0;">
+              Interested
+            </div>
+            <img src="{event.image}" class="thumbnail" />
+          </div>
+
+          <div style="margin-left:2px;">
+            <p class="title">
+              {{event.name}}
+            </p>
+            <div class="tags" style="margin-top:-22px">
+              <div class="smoltag">
+                Tag
+              </div>
+              <div class="smoltag">
+                Tag
+              </div>
+            </div>
+            <p style="margin-top:-20px">
+              Lorem ipsum dolor sit amet.
+            </p>
+          </div>
+          <div style="position:absolute;bottom:0;right:0;">
+            8🙂
+          </div>
+        </div>
+      </section>
+
+      <section class="change">
+        <button class="change active">
+          List View
+        </button>
+        <button class="change">
+          Calendar View
+        </button>
+      </section>
+
+      
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyA6IajEBlN1ftVsXYMJwa5MR205ktPWCOY",
+        authDomain: "eventstool.firebaseapp.com",
+        databaseURL: "https://eventstool.firebaseio.com",
+        projectId: "eventstool",
+        storageBucket: "eventstool.appspot.com",
+        messagingSenderId: "399563964234",
+        appId: "1:399563964234:web:e4238914d7efaa18754bb3"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    
+    let db = firebase.firestore();
+    window.db = db
+
+    window.vm = new Vue({
+        el:'.app',
+        data: {
+            events: []
+        },
+        mounted() {
+            db.collection("events").onSnapshot(doc => {
+                this.events = doc.docs.map(doc => doc.data())
+            })
+        }
+    })
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome, {{name}}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/index-v2.css" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/index.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mali&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="app">
+      <section class="welcome">
+        <div class="profile">
+          <img src="https://picsum.photos/100" class="img_profile" />
+        </div>
+        <div class="row">
+          <div class="welcome_text">
+            <h1>Welcome, {{name}}.</h1>
+          </div>
+          <div class="welcome_choose">
+            <h5>Please choose your interests.</h5>
+          </div>
+        </div>
+      </section>
+
+      <section class="category_list">
+        <div class="category">
+          <div class="category" v-for="category in categories">
+            <div class="category-container" @click="select(category)">
+              <div class="category-thumbnail" :style="{'background': 'url(' + category.image + ')'}">
+                
+              </div>
+              <div class="category-selector" v-if="selected[category.name]">
+                💖
+              </div>
+              <div class="category-name">
+                {{category.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="next">
+        <button class="btn-next" onclick="location.href='main.html'">
+          Next
+        </button>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBuo899ZQ5swYw8tqcBW8mPKYO7onqlILA",
+        authDomain: "contestfinder-fb93f.firebaseapp.com",
+        databaseURL: "https://contestfinder-fb93f.firebaseio.com",
+        projectId: "contestfinder-fb93f",
+        storageBucket: "contestfinder-fb93f.appspot.com",
+        messagingSenderId: "864304786815",
+        appId: "1:864304786815:web:7885aff8e975ad93dcbe4a"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      let db = firebase.firestore();
+
+      window.vm = new Vue({
+        el: '.app',
+        data: {
+          name: '',
+          categories: [],
+          selected: {}
+        },
+        methods: {
+          select(category) {
+            Vue.set(this.selected, category.name, !this.selected[category.name])
+          }
+        },
+        mounted() {
+          db.collection('categories').onSnapshot(doc => {
+            this.categories = doc.docs.map(doc => doc.data())
+          })
+          
+          db.collection('names').doc('names').onSnapshot(doc => {
+            this.name = doc.data().name
+            console.log('Name =', this.name)
+          })
+        }
+      })
+    </script>
+  </body>
+</html>
